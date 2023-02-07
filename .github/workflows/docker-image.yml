@@ -21,5 +21,5 @@ jobs:
         IMAGE_TAG: $GITHUB_REF_NAME
       run: |
         echo "${{ secrets.DOCKER_PWD }}" | docker login -u "sureshnikuliya01" --password-stdin
-        docker image build -t sureshnikuliya01/argocd-app:$IMAGE_TAG .
-        docker push sureshnikuliya01/argocd-app:$IMAGE_TAG
+        docker image build -t sureshnikuliya01/argocd-app:$GITHUB_REF_NAME .
+        docker push sureshnikuliya01/argocd-app:$GITHUB_REF_NAME
