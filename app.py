@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Welcome to ArgoCD learning!!!\n"
+    return "Welcome to ArgoCD learning V1.4\n"
