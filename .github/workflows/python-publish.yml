@@ -28,4 +28,4 @@ jobs:
           with:
             username: sureshnikuliya01
             password: secure\outlook@15char
-            repository: sureshnikuliya01/argocd-app:1.0
+            repository: sureshnikuliya01/user-api:1.0
