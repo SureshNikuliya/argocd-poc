@@ -14,12 +14,13 @@ jobs:
 
     steps:
     - name: Extract Git Tag
-      run: echo "GIT_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     - uses: actions/checkout@v3
     - name: Build the Docker image
       env:
-        IMAGE_TAG: $GITHUB_REF_NAME
+        IMAGE_TAG: ${{ env.RELEASE_VERSION }}
       run: |
+        echo $IMAGE_TAG
         echo "${{ secrets.DOCKER_PWD }}" | docker login -u "sureshnikuliya01" --password-stdin
         docker image build -t sureshnikuliya01/argocd-app:$GITHUB_REF_NAME .
         docker push sureshnikuliya01/argocd-app:$GITHUB_REF_NAME
