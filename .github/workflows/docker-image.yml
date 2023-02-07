@@ -3,10 +3,7 @@ name: Docker Image CI
 on:
   push:
     tags:
-      - 'v*'
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+      - 'v*.*'
 
 jobs:
 
@@ -22,6 +19,8 @@ jobs:
       env:
         IMAGE_TAG: ${{ env.RELEASE_VERSION }}
       run: |
+        echo $RELEASE_VERSION
+        echo ${{ env.RELEASE_VERSION }}
         echo $IMAGE_TAG
         echo $GITHUB_REF
         echo "${{ secrets.DOCKER_PWD }}" | docker login -u "sureshnikuliya01" --password-stdin
