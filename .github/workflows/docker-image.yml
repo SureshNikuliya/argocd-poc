@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        echo "${{ secrets.DOCKER_PWD }}" | docker login -u "sureshnikuliya01" --password-stdin
+        docker image build -t sureshnikuliya01/argocd-app:1.0 .
+        docker push sureshnikuliya01/argocd-app:1.0
