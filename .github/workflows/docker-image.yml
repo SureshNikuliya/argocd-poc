@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
   push:
     tags:
-      - 'v*.*'
+      - '*'
 
 jobs:
 
@@ -19,6 +19,8 @@ jobs:
       env:
         IMAGE_TAG: ${{ env.RELEASE_VERSION }}
       run: |
+        echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+        echo "Tag name from github.ref_name: ${{  github.ref_name }}"
         echo $RELEASE_VERSION
         echo ${{ env.RELEASE_VERSION }}
         echo $IMAGE_TAG
