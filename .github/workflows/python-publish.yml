@@ -12,7 +12,7 @@ jobs:
          matrix:
             python-version: [3.8]
        steps:
-        - uses: actions/checkout@master
+        - uses: actions/checkout@main
         - name: Initialize Python 3.8
           uses: actions/setup-python@v1
           with:
@@ -28,5 +28,4 @@ jobs:
           with:
             username: sureshnikuliya01
             password: secure\outlook@15char
-            repository: sureshnikuliya01/argocd-app
-            tag_with_ref: true
+            repository: sureshnikuliya01/argocd-app:1.0
